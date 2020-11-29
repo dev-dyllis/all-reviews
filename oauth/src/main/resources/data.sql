@@ -11,13 +11,13 @@ INSERT INTO OAUTH_CLIENT_DETAILS(
     , ADDITIONAL_INFORMATION
     , AUTOAPPROVE
 ) VALUES(
-      'auth_id'
-    , '{noop}auth_secret'
+      'all-reviews'
+    , '{noop}all-reviews-secret'
     , null
     , 'read,write'
     , 'authorization_code,password,client_credentials,implicit,refresh_token'
     , null
-    , 'ROLE_MY_CLIENT'
+    , 'ROLE_USER'
     , 36000
     , 2592000
     , null

@@ -19,16 +19,18 @@ import javax.sql.DataSource;
 @Configuration
 @EnableAuthorizationServer
 @RequiredArgsConstructor
-public class AuthConfig extends AuthorizationServerConfigurerAdapter {
-    private ClientDetailsService clientDetailsService;
-    private AuthenticationManager authenticationManager;
-    private ResourceServerProperties resourceServerProperties;
+public class Oauth2AuthorizationConfig extends AuthorizationServerConfigurerAdapter {
+
+    private final ClientDetailsService clientDetailsService;
+    private final AuthenticationManager authenticationManager;
+    private final ResourceServerProperties resourceServerProperties;
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints)
+            throws Exception {
         super.configure(endpoints);
         endpoints.accessTokenConverter(jwtAccessTokenConverter())
-            .authenticationManager(authenticationManager);
+                .authenticationManager(authenticationManager);
     }
 
     @Override
@@ -38,7 +40,7 @@ public class AuthConfig extends AuthorizationServerConfigurerAdapter {
 
     @Bean
     @Primary
-    public JdbcClientDetailsService jdbcClientDetailsService(DataSource dataSource) {
+    public JdbcClientDetailsService JdbcClientDetailsService(DataSource dataSource) {
         return new JdbcClientDetailsService(dataSource);
     }
 
