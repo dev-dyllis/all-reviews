@@ -11,8 +11,8 @@ INSERT INTO OAUTH_CLIENT_DETAILS(
     , ADDITIONAL_INFORMATION
     , AUTOAPPROVE
 ) VALUES(
-      'all-reviews'
-    , '{noop}all-reviews-secret'
+      'all_reviews'
+    , '{noop}all_reviews_secret'
     , null
     , 'read,write'
     , 'authorization_code,password,client_credentials,implicit,refresh_token'

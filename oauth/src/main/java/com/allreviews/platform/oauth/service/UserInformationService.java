@@ -1,6 +1,6 @@
 package com.allreviews.platform.oauth.service;
 
-import com.allreviews.platform.oauth.domain.UserInformation;
+import com.allreviews.platform.oauth.domain.UserAuthentication;
 import com.allreviews.platform.oauth.repository.UserInformationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ public class UserInformationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        UserInformation user = userInformationRepository.findByEmail(email)
+        UserAuthentication user = userInformationRepository.findByEmail(email)
                                 .orElseThrow(() -> new UsernameNotFoundException("Email: " + email + " not found!"));
         return user;
     }
