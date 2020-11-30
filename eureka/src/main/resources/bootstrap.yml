@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ar-api-gateway
+    name: ar-eureka-server
   profiles:
     active: dev
   cloud:

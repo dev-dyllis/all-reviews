@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ar-api-gateway
+    name: ar-user-service
   profiles:
     active: dev
   cloud:
