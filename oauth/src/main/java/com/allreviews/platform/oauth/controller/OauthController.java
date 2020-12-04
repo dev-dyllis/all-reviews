@@ -23,6 +23,6 @@ public class OauthController {
 
     @PostMapping("/logout")
     public String logout() {
-        return null;
+        return oauthService.logout();
     }
 }
