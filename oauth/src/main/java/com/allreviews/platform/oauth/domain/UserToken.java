@@ -1,6 +1,5 @@
 package com.allreviews.platform.oauth.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -18,7 +17,6 @@ import java.io.Serializable;
 public class UserToken implements Serializable {
     @Id
     @Column(name = "USER_ID")
-    @JsonIgnore
     private Long userId;
 
     @Column(name = "ACCESS_TOKEN")

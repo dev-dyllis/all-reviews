@@ -78,7 +78,7 @@ public class OauthService {
                 userTokenRepository.save(userToken);
 
                 ValueOperations<String, Object> value = redisTemplate.opsForValue();
-                value.set(userId.toString(), userToken);
+                value.set(userToken.getAccessToken(), userToken);
 
                 return userToken;
             } else {
