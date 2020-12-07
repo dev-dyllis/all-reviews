@@ -2,7 +2,6 @@ package com.allreviews.platform.oauth.service;
 
 import com.allreviews.platform.oauth.domain.UserAuthentication;
 import com.allreviews.platform.oauth.domain.UserToken;
-import com.allreviews.platform.oauth.repository.UserInformationRepository;
 import com.allreviews.platform.oauth.repository.UserTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -28,7 +27,6 @@ public class OauthService {
     private final RestTemplate restTemplate;
     private final RedisTemplate redisTemplate;
 
-    private final UserInformationRepository userInformationRepository;
     private final UserTokenRepository userTokenRepository;
 
     @Value("${security.oauth2.client.client-id}")
