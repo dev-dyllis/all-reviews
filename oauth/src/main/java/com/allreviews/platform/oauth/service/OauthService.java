@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.*;
+import org.springframework.security.jwt.JwtHelper;
+import org.springframework.security.oauth2.common.util.Jackson2JsonParser;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -63,12 +65,12 @@ public class OauthService {
             HttpStatus statusCode = responseEntity.getStatusCode();
             if (statusCode == HttpStatus.OK) {
                 // 로그인 성공시 MySQL/Redis 토큰 저장
-                UserAuthentication loginUser = userInformationRepository.findByEmail(email).get();
+                String accessToken = result.get("access_token").toString();
+                String userId = new Jackson2JsonParser().parseMap(JwtHelper.decode(accessToken).getClaims()).get("user_id").toString();
 
-                Long userId = loginUser.getUserId();
                 UserToken userToken = UserToken.builder()
-                        .userId(userId)
-                        .accessToken(result.get("access_token").toString())
+                        .userId(Long.parseLong(userId))
+                        .accessToken(accessToken)
                         .refreshToken(result.get("refresh_token").toString())
                         .tokenType(result.get("token_type").toString())
                         .expiresIn(Long.parseLong(result.get("expires_in").toString()))
